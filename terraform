@@ -1,0 +1,15 @@
+#writen in pycharm 
+#finds the folder aws and gets creds
+provider "aws" {
+  profile = "default"
+  region = "us-east-2"
+}
+
+#now to create the bucket
+resource "aws_s3_bucket" "tf_course" {
+    bucket = "JacobAnderson1996"
+    acl = "private"
+}
+
+#then in terminal terrafor plan
+#terraform apply 
