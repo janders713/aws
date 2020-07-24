@@ -33,3 +33,11 @@ resource "aws_s3_bucket" "tf_course" {
 
 #in terminal: terrafor plan
 #terraform apply 
+
+#uploading a file to the bucket
+resource "aws_s3_bucket_object" "object" {
+  bucket = "JacobAnderson1996"
+  key    = "image1"
+  source = "path/to/file"
+
+}
