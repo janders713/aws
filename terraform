@@ -1,4 +1,5 @@
 #writen in pycharm 
+# defult is the acces/secret key
 #finds the folder aws and gets creds
 provider "aws" {
   profile = "default"
@@ -30,5 +31,5 @@ resource "aws_s3_bucket" "tf_course" {
     acl = "private"
 }
 
-#then in terminal terrafor plan
+#in terminal: terrafor plan
 #terraform apply 
