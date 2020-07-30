@@ -41,3 +41,7 @@ resource "aws_s3_bucket_object" "object" {
   source = "path/to/file"
 
 }
+
+
+
+#using boto3 to create a dynamodb
