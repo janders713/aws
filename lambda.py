@@ -15,7 +15,7 @@ resp1 = client.create_function(
 )
 
 resp2 = client.create_function(
-    FunctionName='dynamodbFunc',
+    FunctionName='dydb_func',
     Runtime='python3.8',
     Role='arn:aws:iam::555494021232:role/lambda',
     Handler='code2.query_customers',
@@ -26,7 +26,7 @@ resp2 = client.create_function(
 )
 
 resp3 = client.create_function(
-    FunctionName='timeFunc',
+    FunctionName='time_func',
     Runtime='python3.8',
     Role='arn:aws:iam::555494021232:role/lambda,
     Handler='code3.date_conv',
