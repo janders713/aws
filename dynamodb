@@ -1,6 +1,7 @@
 import boto3
 client = boto3.client('dynamodb')
 
+#create table
 client.create_table(
     AttributeDefinitions=[
         {
@@ -18,7 +19,7 @@ client.create_table(
     BillingMode='PAY_PER_REQUEST',
 )
 
-
+#put items in table
 client.put_item(
     TableName='customers',
     Item={
@@ -34,7 +35,7 @@ client.put_item(
     },
 )
 
-
+#get item in table
 response = client.get_item(
     TableName='customers',
     Key={
