@@ -1,0 +1,12 @@
+import boto3
+client = boto3.client("glue")
+
+response = client.create_job(
+    Name='testJob',
+    Role='arn:aws:iam::555494021232:role/service-role/AWSGlueServiceRole-csvquery',
+
+    Command={
+        'Name': 'g_etl',
+        'ScriptLocation': 's3://jacob713-bucket',
+    },
+)
