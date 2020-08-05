@@ -3,7 +3,7 @@ import boto3
 client = boto3.client("lambda")
 
 
-resp1 = client.create_function(
+f1 = client.create_function(
     FunctionName='glueFunc',
     Runtime='python3.8',
     Role='arn:aws:iam::555494021232:role/lambda',
@@ -14,7 +14,7 @@ resp1 = client.create_function(
     },
 )
 
-resp2 = client.create_function(
+f2 = client.create_function(
     FunctionName='dydb_func',
     Runtime='python3.8',
     Role='arn:aws:iam::555494021232:role/lambda',
@@ -25,7 +25,7 @@ resp2 = client.create_function(
     },
 )
 
-resp3 = client.create_function(
+f3 = client.create_function(
     FunctionName='time_func',
     Runtime='python3.8',
     Role='arn:aws:iam::555494021232:role/lambda,
