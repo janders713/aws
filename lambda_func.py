@@ -22,7 +22,7 @@ def lambda_handler(event, context):
     logger.info('## GLUE JOB RUN ID: ' + response['JobRunId'])
     return response
 
-def query_emp_age(event, context):
+def query_customer(event, context):
     table = dynamodb.Table('customers')
     response = table.query(
         KeyConditionExpression=Key('*').exists()
