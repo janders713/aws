@@ -1,5 +1,6 @@
 # Set up logging
 import json
+import datetime
 import os
 import logging
 logger = logging.getLogger()
@@ -29,7 +30,6 @@ def get_customers(event, context):
     )
     return response
 
-import datetime
-
+#gettung date and then covert it 
 def change_date(event, context):
     return datetime.date.today().__format__("%d/%m/%Y")
