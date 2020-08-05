@@ -31,5 +31,5 @@ def get_customers(event, context):
 
 import datetime
 
-def date_conv(event, context):
+def change_date(event, context):
     return datetime.date.today().__format__("%d/%m/%Y")
