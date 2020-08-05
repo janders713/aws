@@ -22,7 +22,7 @@ def lambda_handler(event, context):
     logger.info('## GLUE JOB RUN ID: ' + response['JobRunId'])
     return response
 
-def query_customers(event, context):
+def get_customers(event, context):
     table = dynamodb.Table('customers')
     response = table.query(
         KeyConditionExpression=Key('*').exists()
