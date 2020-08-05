@@ -2,15 +2,15 @@ import boto3
 client = boto3.client("lambda")
 
 response1 = client.invoke(
-    FunctionName='timeFunc',
+    FunctionName='time_func',
     InvocationType='RequestResponse',
 )
 
-print(response1)
+print(res1)
 
 response2 = client.invoke(
-    FunctionName='dynamodbFunc',
+    FunctionName='dydb_func',
     InvocationType='DryRun',
 )
 
-print(response2)
+print(res2)
