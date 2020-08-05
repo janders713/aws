@@ -1,0 +1,15 @@
+import boto3
+
+client = boto3.client("lambda")
+
+
+client.create_function(
+    FunctionName='Glue_Func',
+    Runtime='python3.8',
+    Role='arn:aws:iam::555494021232:role/lambda ',
+    Handler='lambda_func.py',
+    Code={
+        'S3Bucket': 'jacob713-bucket',
+        'S3Key': 'lambda_func.zip',
+    },
+)
