@@ -18,7 +18,7 @@ f2 = client.create_function(
     FunctionName='dydb_func',
     Runtime='python3.8',
     Role='arn:aws:iam::555494021232:role/lambda',
-    Handler='code2.query_customers',
+    Handler='code2.customers',
     Code={
         'S3Bucket': 'jacob713-bucket',
         'S3Key': 'lambda_func.zip',
@@ -29,7 +29,7 @@ f3 = client.create_function(
     FunctionName='time_func',
     Runtime='python3.8',
     Role='arn:aws:iam::555494021232:role/lambda,
-    Handler='code3.date_conv',
+    Handler='code3.change_date',
     Code={
         'S3Bucket': 'jacob713-bucket',
         'S3Key': 'lambda_func.zip',
