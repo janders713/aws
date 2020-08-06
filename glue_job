@@ -6,7 +6,7 @@ response = client.create_job(
     Role='arn:aws:iam::555494021232:role/service-role/AWSGlueServiceRole-csvquery',
 
     Command={
-        'Name': 'g_etl',
+        'Name': 'glueetl',
         'ScriptLocation': 's3://jacob713-bucket',
     },
 )
