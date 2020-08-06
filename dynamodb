@@ -29,7 +29,7 @@ client.put_item(
         'age':{
             'N': '23',
         },
-        'number': {
+        'phone': {
             'N': '2797082',
         }
     },
