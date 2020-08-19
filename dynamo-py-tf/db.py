@@ -1,35 +1,31 @@
-def start(event, context):
-
-
 import boto3
 
+from botocore.client import BaseClient
 
-client = boto3.client('dynamodb')
-
-
-
-
-#create table
-
-client.create_table(
-    AttributeDefinitions=[
-        {
-            'AttributeName': 'phone',
-            'AttributeType': 'N'
-        },
-    ],
-    KeySchema=[
-        {
-            'AttributeName': 'phone',
-            'KeyType': 'HASH'
-        },
-    ],
-    TableName='customers',
-    BillingMode='PAY_PER_REQUEST',
-)
+client: BaseClient = boto3.client('dynamodb')
 
 
-#put items in table
+# create table
+def start(event, context):
+    client.create_table(
+        AttributeDefinitions=[
+            {
+                'AttributeName': 'phone',
+                'AttributeType': 'N'
+            },
+        ],
+        KeySchema=[
+            {
+                'AttributeName': 'phone',
+                'KeyType': 'HASH'
+            },
+        ],
+        TableName='customers',
+        BillingMode='PAY_PER_REQUEST',
+    )
+
+
+# put items in table
 
 client.put_item(
     TableName='customers',
@@ -37,7 +33,7 @@ client.put_item(
         'name': {
             'S': 'Jacob',
         },
-        'age':{
+        'age': {
             'N': '23',
         },
         'phone': {
@@ -46,7 +42,7 @@ client.put_item(
     },
 )
 
-#get item in table
+# get item in table
 
 response = client.get_item(
     TableName='customers',

@@ -1,7 +1,35 @@
 #creates role
-resource "aws_iam_role" "lambda" {
+resource "aws_iam_role" "AWSLAMBDA" {
   name = "AWSLAMBDA"
+
   assume_role_policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": "sts:AssumeRole",
+      "Principal": {
+        "Service": "lambda.amazonaws.com"
+      },
+      "Effect": "Allow",
+      "Sid": ""
+    }
+  ]
+}
+EOF
+}
+#attaches role
+resource "aws_iam_role_policy_attachment" "lambda" {
+    role = aws_iam_role.AWSLAMBDA.id
+    policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLAMBDA"
+}
+
+#policy for lambda
+
+resource "aws_iam_role_policy" "my_lambda_policy" {
+  name = "my_lambda_policy"
+  role = aws_iam_role.AWSLAMBDA.id
+  policy = <<EOF
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -16,16 +44,10 @@ resource "aws_iam_role" "lambda" {
 EOF
 }
 
-#attaches role
-resource "aws_iam_role_policy_attachment" "lambda" {
-    role = aws_iam_role.lambda.id
-    policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLAMBDA"
-}
-
-#policy for s3 and attach it to glue role
-resource "aws_iam_role_policy" "my_s3_policy" {
+#policy for db and attach it to lambda role
+resource "aws_iam_role_policy" "my_db_policy" {
   name = "my_db_policy"
-  role = aws_iam_role.lambda.id
+  role = aws_iam_role.AWSLAMBDA.id
   policy = <<EOF
 {
   "Version": "2012-10-17",
@@ -69,7 +91,7 @@ data "archive_file" "welcome" {
 resource "aws_lambda_function" "test_lambda" {
   filename      = local.lambda_zip_location
   function_name = "db"
-  role          = aws_iam_role.lambda.id
+  role          = aws_iam_role.AWSLAMBDA.id
   handler       = "db.start"
 
   #source_code_hash = filebase64sha256("local.lambda_zip_location")
