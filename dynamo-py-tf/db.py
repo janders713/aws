@@ -1,8 +1,7 @@
 import boto3
 
-from botocore.client import BaseClient
 
-client: BaseClient = boto3.client('dynamodb')
+client = boto3.client('dynamodb')
 
 
 # create table
